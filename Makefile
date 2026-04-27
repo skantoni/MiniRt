@@ -1,10 +1,10 @@
-NAME=minirt
+NAME=miniRT
 
 CC= cc
 
 CFLAGS = -Wall -Wextra -Werror -I include -I src/libft -I minilibx-linux
 
-SRC = src/main.c
+SRC = src/main.c src/windows/create_win.c src/parser/parse_miniRT.c
 
 OBJS = $(SRC:.c=.o)
 

@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   create_win.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 17:38:31 by pavelino         ###   ########.fr       */
+/*   Created: 2026/04/27 16:48:56 by pavelino          #+#    #+#             */
+/*   Updated: 2026/04/27 16:54:58 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../include/minirt.h"
 
-int	main(int ac, char **av)
+void    create_window(t_mlx *mlx)
 {
-	t_mlx	*wind;
-	int	fd;
-	
-	if (ac != 2)
-		return (1);
-	if (parse_file(av[1]))
-		return (1);
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0)
-		return (write(2, "Error\n", 6), 1);
-	write(1, "Sucessfull\n", 11);
-	wind = malloc(sizeof(t_mlx));
-	if (!wind)
-		return (1);
-	create_window(wind);
-	return (0);
+    mlx->mlx = mlx_init();
+    mlx->win = mlx_new_window(mlx->mlx, 1200, 900, "miniRT");
+    mlx_loop(mlx->mlx);
 }

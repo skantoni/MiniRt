@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_miniRT.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 17:38:31 by pavelino         ###   ########.fr       */
+/*   Created: 2026/04/27 17:12:00 by pavelino          #+#    #+#             */
+/*   Updated: 2026/04/27 17:34:49 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../include/minirt.h"
 
-int	main(int ac, char **av)
+int parse_file(char *arg)
 {
-	t_mlx	*wind;
-	int	fd;
-	
-	if (ac != 2)
-		return (1);
-	if (parse_file(av[1]))
-		return (1);
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0)
-		return (write(2, "Error\n", 6), 1);
-	write(1, "Sucessfull\n", 11);
-	wind = malloc(sizeof(t_mlx));
-	if (!wind)
-		return (1);
-	create_window(wind);
-	return (0);
+    char    *str;
+
+    str = ft_strrchr(arg, '.');
+    if (ft_strncmp(".rt", str, 4) == 0)
+        return (0);
+    write(2, "Verifique a extensao do arquivo\n", 32);
+    return (1);
 }

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
 #include "../minilibx-linux/mlx.h"
 #include "../src/libft/libft.h"
 
@@ -14,5 +15,9 @@ typedef struct s_mlx
     int     wdh;
     int     hgt;
 }   t_mlx;
+
+
+void    create_window(t_mlx *mlx);
+int     parse_file(char *arg);
 
 #endif
