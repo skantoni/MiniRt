@@ -2,7 +2,7 @@ NAME=minirt
 
 CC= cc
 
-CFLAGS = -Wall -Wextra -Werror -I include -I src/libft
+CFLAGS = -Wall -Wextra -Werror -I include -I src/libft -I minilibx-linux
 
 SRC = src/main.c
 
@@ -10,22 +10,29 @@ OBJS = $(SRC:.c=.o)
 
 HEADER= include/minirt.h
 
-MATH = -lm
+LIBXFLAGS = -lX11 -lXext -lm
 
 LIBFT = src/libft/libft.a
+
+MLX = ./minilibx-linux/libmlx_Linux.a
 
 all: $(NAME)
 
 $(OBJS): $(HEADER)
 
-$(NAME): $(LIBFT) $(OBJS)
-	@$(CC) $(OBJS) $(CFLAGS) $(LIBFT) $(MATH) -o $(NAME)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
+	@$(CC) $(OBJS) $(CFLAGS) $(LIBFT) $(MLX) $(LIBXFLAGS) -o $(NAME)
 
 $(LIBFT): 
 	@$(MAKE) -C src/libft
+
+$(MLX):
+	@$(MAKE) -C minilibx-linux
 clean:
 	@rm -f $(OBJS)
 	@$(MAKE) -C src/libft/ clean
+	@$(MAKE) -C minilibx-linux clean
+
 fclean: clean
 	rm -f $(NAME)
 	@$(MAKE) -C src/libft/ fclean
