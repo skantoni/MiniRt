@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 12:01:03 by pavelino         ###   ########.fr       */
+/*   Created: 2025/06/23 14:22:21 by pavelino          #+#    #+#             */
+/*   Updated: 2025/06/23 15:19:53 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "libft.h"
 
-int	main()
+void	ft_putchar_fd(char c, int fd)
 {
-	printf("Hello world\n");
-	printf("Pedro Mawonso Avelino\n");
-	return (0);
+	write (fd, &c, 1);
 }

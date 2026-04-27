@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 12:01:03 by pavelino         ###   ########.fr       */
+/*   Created: 2025/06/10 15:19:26 by pavelino          #+#    #+#             */
+/*   Updated: 2025/06/10 16:20:46 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "libft.h"
 
-int	main()
+int	ft_isalnum(int c)
 {
-	printf("Hello world\n");
-	printf("Pedro Mawonso Avelino\n");
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
 	return (0);
 }

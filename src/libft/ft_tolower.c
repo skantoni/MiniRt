@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 12:01:03 by pavelino         ###   ########.fr       */
+/*   Created: 2025/06/16 19:29:25 by pavelino          #+#    #+#             */
+/*   Updated: 2025/06/16 19:33:29 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
-
-int	main()
+int	ft_tolower(int c)
 {
-	printf("Hello world\n");
-	printf("Pedro Mawonso Avelino\n");
-	return (0);
+	if ((c >= 65) && (c <= 90))
+		return (c + 32);
+	else
+		return (c);
 }

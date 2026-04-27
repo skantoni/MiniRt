@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 12:01:03 by pavelino         ###   ########.fr       */
+/*   Created: 2025/06/11 18:54:12 by pavelino          #+#    #+#             */
+/*   Updated: 2025/06/12 16:58:39 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "libft.h"
 
-int	main()
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	printf("Hello world\n");
-	printf("Pedro Mawonso Avelino\n");
-	return (0);
+	unsigned char	*orgm;
+	unsigned char	*destino;
+	size_t			c;
+	long			len;
+
+	if ((!dest || !src) && n > 0)
+		return (NULL);
+	len = (long)n;
+	if (len < 0)
+		return (NULL);
+	destino = (unsigned char *)dest;
+	orgm = (unsigned char *)src;
+	c = 0;
+	while (c < n)
+	{
+		destino[c] = orgm[c];
+		c++;
+	}
+	return (dest);
 }

@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 12:01:03 by pavelino         ###   ########.fr       */
+/*   Created: 2025/06/20 12:43:01 by pavelino          #+#    #+#             */
+/*   Updated: 2025/06/20 17:27:49 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "libft.h"
 
-int	main()
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	printf("Hello world\n");
-	printf("Pedro Mawonso Avelino\n");
-	return (0);
+	void	*vetor;
+	size_t	qb;
+
+	qb = nmemb * size;
+	if (size && (qb / size) != nmemb)
+		return (NULL);
+	vetor = malloc(qb);
+	if (vetor == NULL)
+		return (NULL);
+	ft_bzero(vetor, qb);
+	return (vetor);
 }

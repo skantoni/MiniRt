@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 12:01:03 by pavelino         ###   ########.fr       */
+/*   Created: 2025/06/18 02:37:13 by pavelino          #+#    #+#             */
+/*   Updated: 2025/06/18 03:24:49 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "libft.h"	
 
-int	main()
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	printf("Hello world\n");
-	printf("Pedro Mawonso Avelino\n");
-	return (0);
+	size_t				i;
+	long				len;
+	const unsigned char	*ptr;
+
+	if (!s)
+		return (NULL);
+	len = (long)n;
+	if (len < 0)
+		return (NULL);
+	ptr = (const unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (ptr[i] == (unsigned char)c)
+		{
+			return ((void *)&ptr[i]);
+		}
+		i++;
+	}
+	return (NULL);
 }

@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 12:01:03 by pavelino         ###   ########.fr       */
+/*   Created: 2025/06/23 10:51:17 by pavelino          #+#    #+#             */
+/*   Updated: 2025/06/23 13:18:27 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "libft.h"
 
-int	main()
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	printf("Hello world\n");
-	printf("Pedro Mawonso Avelino\n");
-	return (0);
+	size_t		i;
+	size_t		tama;
+	char		*nova_str;
+
+	if (!s || !f)
+		return (NULL);
+	tama = ft_strlen(s);
+	nova_str = (char *)malloc(sizeof (char) * (tama + 1));
+	if (!nova_str)
+		return (NULL);
+	i = 0;
+	while (i < tama)
+	{
+		nova_str[i] = f(i, s[i]);
+		i++;
+	}
+	nova_str[i] = '\0';
+	return (nova_str);
 }

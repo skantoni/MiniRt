@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 12:01:03 by pavelino         ###   ########.fr       */
+/*   Created: 2025/06/13 19:17:55 by pavelino          #+#    #+#             */
+/*   Updated: 2025/06/16 13:59:34 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "libft.h"
 
-int	main()
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	printf("Hello world\n");
-	printf("Pedro Mawonso Avelino\n");
-	return (0);
+	size_t	c;
+	size_t	tama;
+
+	if (!dst || !src)
+		return (0);
+	tama = ft_strlen(src);
+	c = 0;
+	if (size > 0)
+	{
+		while ((c < size - 1) && (src[c] != '\0'))
+		{
+			dst[c] = src[c];
+			c++;
+		}
+		dst[c] = '\0';
+	}
+	return (tama);
 }
