@@ -18,6 +18,6 @@ typedef struct s_mlx
 
 
 void    create_window(t_mlx *mlx);
-int     parse_file(char *arg);
+int     parse_extetion(char *arg);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 17:38:31 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/05/02 12:48:47 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	main(int ac, char **av)
 	
 	if (ac != 2)
 		return (1);
-	if (parse_file(av[1]))
+	if (parse_extetion(av[1]))
 		return (1);
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (write(2, "Error\n", 6), 1);
-	write(1, "Sucessfull\n", 11);
+	//write(1, "Sucessfull\n", 11);
 	wind = malloc(sizeof(t_mlx));
 	if (!wind)
 		return (1);

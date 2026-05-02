@@ -6,13 +6,13 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 17:12:00 by pavelino          #+#    #+#             */
-/*   Updated: 2026/04/27 17:34:49 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/05/02 12:48:10 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-int parse_file(char *arg)
+int parse_extetion(char *arg)
 {
     char    *str;
 
@@ -22,3 +22,4 @@ int parse_file(char *arg)
     write(2, "Verifique a extensao do arquivo\n", 32);
     return (1);
 }
+
