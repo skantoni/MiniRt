@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
-#include "../minilibx-linux/mlx.h"
+#include "minilibx-linux/mlx.h"
 #include "../src/libft/libft.h"
 
 typedef struct s_mlx

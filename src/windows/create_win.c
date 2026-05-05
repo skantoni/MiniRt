@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minirt.h"
+#include "../../includes/minirt.h"
 
 void    create_window(t_mlx *mlx)
 {

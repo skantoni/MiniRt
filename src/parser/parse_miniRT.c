@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minirt.h"
+#include "../../includes/minirt.h"
 
 int parse_extetion(char *arg)
 {

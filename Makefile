@@ -2,19 +2,19 @@ NAME=miniRT
 
 CC= cc
 
-CFLAGS = -Wall -Wextra -Werror -I include -I src/libft -I minilibx-linux
+CFLAGS = -Wall -Wextra -Werror -I includes -I src/libft -I ./includes/minilibx-linux
 
 SRC = src/main.c src/windows/create_win.c src/parser/parse_miniRT.c
 
 OBJS = $(SRC:.c=.o)
 
-HEADER= include/minirt.h
+HEADER= includes/minirt.h
 
 LIBXFLAGS = -lX11 -lXext -lm
 
 LIBFT = src/libft/libft.a
 
-MLX = ./minilibx-linux/libmlx_Linux.a
+MLX = ./includes/minilibx-linux/libmlx_Linux.a
 
 all: $(NAME)
 
@@ -27,11 +27,11 @@ $(LIBFT):
 	@$(MAKE) -C src/libft
 
 $(MLX):
-	@$(MAKE) -C minilibx-linux
+	@$(MAKE) -C ./includes/minilibx-linux
 clean:
 	@rm -f $(OBJS)
 	@$(MAKE) -C src/libft/ clean
-	@$(MAKE) -C minilibx-linux clean
+	@$(MAKE) -C ./includes/minilibx-linux clean
 
 fclean: clean
 	rm -f $(NAME)
