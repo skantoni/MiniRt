@@ -18,7 +18,7 @@ int	parse_extention(char *av)
 	str = ft_strrchr(av, '.');
 	if (ft_strncmp(".rt", str, 4) == 0)
 		return (0);
-	write(2, "Verifique a extensao do arquivo\n", 32);
+	print_error("minirt", "Verifique a extensao do arquivo", NULL);
 	return (1);
 }
 
