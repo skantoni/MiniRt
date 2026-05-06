@@ -4,7 +4,7 @@ CC= cc
 
 CFLAGS = -Wall -Wextra -Werror -I includes -I src/libft -I ./includes/minilibx-linux
 
-SRC = src/main.c src/windows/create_win.c src/parser/parse_minirt.c
+SRC = src/main.c src/windows/create_win.c src/parser/parse_minirt.c src/parser/print_error.c
 
 OBJS = $(SRC:.c=.o)
 

@@ -28,8 +28,8 @@ typedef struct s_mlx
 	int		hgt;
 }	t_mlx;
 
-void	create_window(t_mlx *mlx);
 int		parse_extention(char *arg);
 int		parse_minirt(char *av);
-
+void	create_window(t_mlx *mlx);
+void	print_error(const char *prefix, const char *subject, const char *suffix);
 #endif

@@ -15,12 +15,14 @@
 int	main(int ac, char **av)
 {
 	t_mlx	*wind;
-	int	fd;
-	
+	int		fd;
+
 	if (ac != 2)
-		return (1);
+		return (print_error("minirt", "Insira", "./miniRT scene.rt"), 1);
 	if (parse_minirt(av[1]))
+	{
 		return (1);
+	}
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (write(2, "Error\n", 6), 1);
@@ -31,4 +33,3 @@ int	main(int ac, char **av)
 	create_window(wind);
 	return (0);
 }
-
