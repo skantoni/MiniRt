@@ -31,3 +31,4 @@ int	main(int ac, char **av)
 	create_window(wind);
 	return (0);
 }
+
