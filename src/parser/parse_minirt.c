@@ -9,17 +9,22 @@
 /*   Updated: 2026/05/02 12:48:10 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../../includes/minirt.h"
 
-int parse_extetion(char *arg)
+int	parse_extention(char *av)
 {
-    char    *str;
+	char	*str;
 
-    str = ft_strrchr(arg, '.');
-    if (ft_strncmp(".rt", str, 4) == 0)
-        return (0);
-    write(2, "Verifique a extensao do arquivo\n", 32);
-    return (1);
+	str = ft_strrchr(av, '.');
+	if (ft_strncmp(".rt", str, 4) == 0)
+		return (0);
+	write(2, "Verifique a extensao do arquivo\n", 32);
+	return (1);
 }
 
+int	parse_minirt(char *av)
+{
+	if (parse_extention(av))
+		return (1);
+	return (0);
+}
