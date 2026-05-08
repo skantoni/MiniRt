@@ -12,9 +12,9 @@
 
 #include "../../includes/minirt.h"
 
-void    create_window(t_mlx *mlx)
+void	create_window(t_mlx *mlx)
 {
-    mlx->mlx = mlx_init();
-    mlx->win = mlx_new_window(mlx->mlx, 1200, 900, "miniRT");
-    mlx_loop(mlx->mlx);
+	mlx->mlx = mlx_init();
+	mlx->win = mlx_new_window(mlx->mlx, 1200, 900, "miniRT");
+	mlx_loop(mlx->mlx);
 }

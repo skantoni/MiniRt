@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../../includes/minirt.h"
 
-int count_l(char *path)
+int	count_l(char *path)
 {
 	int		count;
 	char	*linha;
@@ -33,6 +33,5 @@ int count_l(char *path)
 			break ;
 	}
 	close (fd);
-	printf("%d linhas \n", count);
 	return (count);
 }

@@ -1,0 +1,11 @@
+#ingnorar os .o
+*.o
+
+#ignorar o executável
+miniRT
+
+#ignorar a todos .a
+*.a
+
+#ignorar o .gitignore
+##.gitignore

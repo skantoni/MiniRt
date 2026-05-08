@@ -21,22 +21,8 @@
 # endif
 
 char	*get_next_line(int fd);
-//size_t	ft_strlen(char *str);
-//char	*ft_strdup(char	*str);
-//char	*ft_strjoin(char *s1, char *s2);
-//char	*ft_strchr(char *str, char c);
+
 char	*ft_read(int fd, char *guard);
-//char	*ft_substr(const char *str, size_t s, size_t len);
 char	*r_line(char *guard);
 char	*align_guard(char *resto);
-/* 
-char	*get_next_line(int fd);
-size_t	ft_strlen(char *str);
-char	*ft_strdup(char	*str);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(char *str, char c);
-char	*ft_read(int fd, char *guard);
-char	*ft_substr(const char *str, size_t s, size_t len);
-char	*r_line(char *guard);
-char	*align_guard(char *resto); */
 #endif
