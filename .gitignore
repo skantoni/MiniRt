@@ -9,3 +9,6 @@ miniRT
 
 #ignorar o .gitignore
 ##.gitignore
+
+#ignorar meus(skeny) files
+*.sk

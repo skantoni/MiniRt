@@ -12,9 +12,23 @@
 
 #include "../includes/minirt.h"
 
+/* int	handle_keypress(int keycode, t_game *game)
+{
+	if (keycode == 65307)
+		return (0);
+	return (0);
+} */
+int	close_window(t_mlx *mlx)
+{
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	exit(0);
+	return (0);
+
+}
+
 int	main(int ac, char **av)
 {
-	t_mlx	*wind;
+	t_mlx	mlx;
 	int		fd;
 
 	if (ac != 2)
@@ -24,10 +38,9 @@ int	main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (write(2, "Error\n", 6), 1);
-	//return (write(1, "Sucessfull\n", 11)), 0;
-	wind = malloc(sizeof(t_mlx));
-	if (!wind)
-		return (1);
-	create_window(wind);
+	create_window(&mlx);
+	mlx_hook(mlx.win, 17, 1L << 17, close_window, &mlx);
+	mlx_loop(mlx.mlx);
+
 	return (0);
 }

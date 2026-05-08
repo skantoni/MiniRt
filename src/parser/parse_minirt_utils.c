@@ -10,6 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/minirt.h"
+static int have_valid_char(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] > 32)
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	count_l(char *path)
 {
@@ -26,7 +39,8 @@ int	count_l(char *path)
 		linha = get_next_line(fd);
 		if (linha)
 		{
-			count++;
+			if (have_valid_char(linha))
+				count++;
 			free(linha);
 		}
 		else
@@ -42,6 +56,7 @@ int	file_read(char *av)
 	int		fd;
 	int		i;
 	int		nl;
+	char	*line;
 
 	fd = open(av, O_RDONLY);
 	i = 0;
@@ -51,9 +66,18 @@ int	file_read(char *av)
 		return (1);
 	while (i < nl)
 	{
-		map[i] = get_next_line(fd);
+		line = ft_strtrim((get_next_line(fd)), " \n\t");
+		if (have_valid_char(line))
+			map[i++] = line;
+		else
+			free(line);
+	}
+	map[nl] = NULL;
+	i = 0;
+	while (map[i])
+	{
+		printf("linha : %s\n", map[i]);
 		i++;
 	}
-	map[i] = NULL;
 	return (0);
 }

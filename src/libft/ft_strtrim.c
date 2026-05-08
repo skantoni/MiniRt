@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char *s1, char *set)
 {
 	char	*str;
 	size_t	inicio;
@@ -38,5 +38,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		inicio++;
 	}
 	str[i] = '\0';
+	free((char *)s1);
 	return (str);
 }
