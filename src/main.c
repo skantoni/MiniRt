@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (write(2, "Error\n", 6), 1);
-	//write(1, "Sucessfull\n", 11);
+	//return (write(1, "Sucessfull\n", 11)), 0;
 	wind = malloc(sizeof(t_mlx));
 	if (!wind)
 		return (1);

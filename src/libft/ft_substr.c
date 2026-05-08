@@ -31,7 +31,7 @@ static char	*veri_substr(char const *str, unsigned int i, size_t tama)
 	return (substr);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, size_t start, size_t len)
 {
 	size_t	tamatotal;
 	long	neg;

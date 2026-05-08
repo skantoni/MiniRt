@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include "minilibx-linux/mlx.h"
 # include "../src/libft/libft.h"
+# include "../src/get_next_line/get_next_line.h"
 
 typedef struct s_mlx
 {
@@ -30,6 +31,7 @@ typedef struct s_mlx
 
 int		parse_extention(char *arg);
 int		parse_minirt(char *av);
+int		count_l(char *path);
 void	create_window(t_mlx *mlx);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 #endif
