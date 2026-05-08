@@ -32,6 +32,7 @@ typedef struct s_mlx
 int		parse_extention(char *arg);
 int		parse_minirt(char *av);
 int		count_l(char *path);
+int	file_read(char *av);
 void	create_window(t_mlx *mlx);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 #endif

@@ -35,3 +35,25 @@ int	count_l(char *path)
 	close (fd);
 	return (count);
 }
+
+int	file_read(char *av)
+{
+	char	**map;
+	int		fd;
+	int		i;
+	int		nl;
+
+	fd = open(av, O_RDONLY);
+	i = 0;
+	nl = count_l(av);
+	map = malloc(sizeof(char *) * nl + 1);
+	if (!map)
+		return (1);
+	while (i < nl)
+	{
+		map[i] = get_next_line(fd);
+		i++;
+	}
+	map[i] = NULL;
+	return (0);
+}
