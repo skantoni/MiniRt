@@ -38,6 +38,7 @@ char	*ft_strtrim(char *s1, char *set)
 		inicio++;
 	}
 	str[i] = '\0';
-	free((char *)s1);
+	if (s1)
+		free(s1);
 	return (str);
 }

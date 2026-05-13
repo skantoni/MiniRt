@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/minirt.h"
-static int have_valid_char(char *str)
+
+static int	line_empety(char *str)
 {
 	int	i;
 
@@ -18,10 +19,10 @@ static int have_valid_char(char *str)
 	while (str[i])
 	{
 		if (str[i] > 32)
-			return (1);
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 int	count_l(char *path)
@@ -39,7 +40,7 @@ int	count_l(char *path)
 		linha = get_next_line(fd);
 		if (linha)
 		{
-			if (have_valid_char(linha))
+			if (!(line_empety(linha)))
 				count++;
 			free(linha);
 		}
@@ -50,34 +51,33 @@ int	count_l(char *path)
 	return (count);
 }
 
-int	file_read(char *av)
+int	read_file(char *av, t_scene *scene)
 {
-	char	**map;
 	int		fd;
 	int		i;
-	int		nl;
 	char	*line;
 
 	fd = open(av, O_RDONLY);
 	i = 0;
-	nl = count_l(av);
-	map = malloc(sizeof(char *) * nl + 1);
-	if (!map)
+	scene->line_count = count_l(av);
+	scene->file = malloc(sizeof(char *) * (scene->line_count + 1));
+	if (!scene->file)
 		return (1);
-	while (i < nl)
+	while (i < scene->line_count)
 	{
 		line = ft_strtrim((get_next_line(fd)), " \n\t");
-		if (have_valid_char(line))
-			map[i++] = line;
+		if (!(line_empety(line)))
+			scene->file[i++] = line;
 		else
 			free(line);
 	}
-	map[nl] = NULL;
+	scene->file[i] = NULL;
 	i = 0;
-	while (map[i])
+	while (scene->file[i])
 	{
-		printf("linha : %s\n", map[i]);
+		printf("linha : %s\n", scene->file[i]);
 		i++;
 	}
+	close(fd);
 	return (0);
 }

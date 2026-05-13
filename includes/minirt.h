@@ -9,7 +9,6 @@
 /*   Updated: 2026/05/06 09:34:52 by skantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef MINIRT_H
 # define MINIRT_H
 
@@ -20,6 +19,7 @@
 # include "minilibx-linux/mlx.h"
 # include "../src/libft/libft.h"
 # include "../src/get_next_line/get_next_line.h"
+#include "objects.h"
 
 typedef struct s_mlx
 {
@@ -29,12 +29,47 @@ typedef struct s_mlx
 	int		hgt;
 }	t_mlx;
 
+typedef struct s_camera
+{
+	t_vec3	position;
+	t_vec3	orientation;
+	double	fov;
+}	t_camera;
 
+typedef struct s_light
+{
+	t_vec3	position;
+	double	brightness;
+	int		color;
+}	t_light;
+
+
+
+typedef struct s_ambient
+{
+	double	ratio;
+	int		color;
+}	t_ambient;
+
+typedef struct s_scene
+{
+	char		**file;
+	int			line_count;
+	t_ambient		ambient;
+	t_camera		camera;
+	t_light			light;
+
+	t_sphere		*spheres;
+	t_plane			*planes;
+	t_cylinder		*cylinders;
+}	t_scene;
 
 int		parse_extention(char *arg);
-int		parse_minirt(char *av);
+int		parse_minirt(char *av, t_scene *scene);
 int		count_l(char *path);
-int		file_read(char *av);
+int		read_file(char *av, t_scene *scene);
 int		create_window(t_mlx *mlx);
+int		clean(t_mlx *mlx, t_scene *scene, int status);
+int		close_window(t_mlx *mlx);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 #endif
