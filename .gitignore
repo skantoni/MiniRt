@@ -1,6 +1,9 @@
 #ingnorar os .o
 *.o
 
+*.swa
+*.swp
+
 #ignorar o executável
 miniRT
 

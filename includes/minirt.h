@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skantoni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:34:51 by skantoni          #+#    #+#             */
-/*   Updated: 2026/05/06 09:34:52 by skantoni         ###   ########.fr       */
+/*   Updated: 2026/05/23 14:22:11 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef MINIRT_H
 # define MINIRT_H
 
@@ -43,8 +44,6 @@ typedef struct s_light
 	int		color;
 }	t_light;
 
-
-
 typedef struct s_ambient
 {
 	double	ratio;
@@ -72,4 +71,5 @@ int		create_window(t_mlx *mlx);
 int		clean(t_mlx *mlx, t_scene *scene, int status);
 int		close_window(t_mlx *mlx);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
+
 #endif

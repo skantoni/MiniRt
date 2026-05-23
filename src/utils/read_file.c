@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_win.c                                       :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 16:48:56 by pavelino          #+#    #+#             */
-/*   Updated: 2026/05/23 14:42:07 by pavelino         ###   ########.fr       */
+/*   Created: 2026/05/02 15:18:09 by pavelino          #+#    #+#             */
+/*   Updated: 2026/05/02 15:36:33 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "../../include/minirt.h"
 
-int	create_window(t_mlx *mlx)
+void    read_file(char *file)
 {
-	mlx->mlx = mlx_init();
-	if (!mlx->mlx)
-		return (1);
-	mlx->win = mlx_new_window(mlx->mlx, 1200, 900, "miniRT");
-	if (!mlx->win)
-		return (1);
-	return (0);
+    int fd;
+    char    *line = NULL;
+
+    fd = open(file, O_RDONLY);
+	if (fd < 0)
+    {
+        write(2, "Error\n", 6);
+		return ;
+    }
+	write(1, "Sucessfull\n", 11);
+    while ((line = get_next_line(fd)))
+        printf("%s\n", line);
 }
