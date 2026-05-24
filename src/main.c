@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/05/23 14:42:54 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/05/24 17:37:10 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int ac, char **av)
 		return (write(2, "Error\n", 6), 1);
 	create_window(&mlx);
 	mlx_hook(mlx.win, 17, 0, close_window, &mlx);
+	mlx_hook(mlx.win, 2, 1L << 0, handle_escape, &mlx);
 	mlx_loop(mlx.mlx);
 	clean(&mlx, &scene, 0);
 	return (0);

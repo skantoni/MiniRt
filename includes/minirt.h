@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:34:51 by skantoni          #+#    #+#             */
-/*   Updated: 2026/05/23 14:22:11 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/05/24 17:37:31 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		count_l(char *path);
 int		read_file(char *av, t_scene *scene);
 int		create_window(t_mlx *mlx);
 int		clean(t_mlx *mlx, t_scene *scene, int status);
+int		handle_escape(int keycode, t_mlx *mlx);
 int		close_window(t_mlx *mlx);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 

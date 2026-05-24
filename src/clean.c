@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skantoni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 13:48:40 by skantoni          #+#    #+#             */
-/*   Updated: 2026/05/11 13:48:42 by skantoni         ###   ########.fr       */
+/*   Updated: 2026/05/24 17:36:39 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/minirt.h"
 
 int	close_window(t_mlx *mlx)
@@ -18,6 +19,13 @@ int	close_window(t_mlx *mlx)
     mlx_destroy_display(mlx->mlx);
 	exit(0);
 	return (0);
+}
+
+int handle_escape(int keycode, t_mlx *mlx)
+{
+    if (keycode ==  65307)
+        close_window(mlx);
+    return (0);
 }
 
 int	clean(t_mlx *mlx, t_scene *scene, int status)

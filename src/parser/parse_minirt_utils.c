@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   parse_minirt_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skantoni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 12:09:44 by skantoni          #+#    #+#             */
-/*   Updated: 2026/05/07 12:09:46 by skantoni         ###   ########.fr       */
+/*   Updated: 2026/05/23 15:12:22 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../includes/minirt.h"
 
 static int	line_empety(char *str)
@@ -67,7 +68,9 @@ int	read_file(char *av, t_scene *scene)
 	{
 		line = ft_strtrim((get_next_line(fd)), " \n\t");
 		if (!(line_empety(line)))
+		{
 			scene->file[i++] = line;
+		}
 		else
 			free(line);
 	}
