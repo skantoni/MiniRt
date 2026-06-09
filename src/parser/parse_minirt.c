@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 17:12:00 by pavelino          #+#    #+#             */
-/*   Updated: 2026/05/23 15:02:34 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/06/09 12:31:06 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,23 @@
 
 static int parse_line(char *line, t_scene *scene)
 {
-
 	(void)scene;
-	if (ft_strncmp(line, "A ", 2) == 0)
-		return (printf("Ambient\n"), 0);
+	
+	char	**tokens;
+
+	tokens = tokenizer_info(line);
+	if (!tokens)
+		return(1);
+	if (ft_strncmp(tokens[0], "A", 2) == 0)
+	{
+		scene->has_ambient++;
+		if (parse_ambient(tokens, scene))
+			/*  something must happen here
+				I am thinking of stop the program and show an error message in the terminal
+			*/
+			printf("Error\n");
+		return (0);
+	}
 	else if (ft_strncmp(line, "C ", 2) == 0)
 		return (printf("CAMERA\n"), 0);
 	else if (ft_strncmp(line, "L ", 2) == 0)

@@ -6,16 +6,29 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 12:09:44 by skantoni          #+#    #+#             */
-/*   Updated: 2026/05/23 15:12:22 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/06/09 13:29:46 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "../../includes/minirt.h"	
+
+
+char	**tokenizer_info(char *line)
+{
+	char	**tokens;
+
+	if (!line)
+		return (NULL);
+	tokens = ft_split(line, ' ');
+	return (tokens);
+}
 
 static int	line_empety(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (1);
 	i = 0;
 	while (str[i])
 	{
@@ -29,7 +42,7 @@ static int	line_empety(char *str)
 int	count_l(char *path)
 {
 	int		count;
-	char	*linha;
+	char	*line;
 	int		fd;
 
 	count = 0;
@@ -38,12 +51,12 @@ int	count_l(char *path)
 		return (-1);
 	while (1)
 	{
-		linha = get_next_line(fd);
-		if (linha)
+		line = get_next_line(fd);
+		if (line)
 		{
-			if (!(line_empety(linha)))
+			if (!(line_empety(line)) && line[0] != '#')
 				count++;
-			free(linha);
+			free(line);
 		}
 		else
 			break ;
@@ -67,10 +80,8 @@ int	read_file(char *av, t_scene *scene)
 	while (i < scene->line_count)
 	{
 		line = ft_strtrim((get_next_line(fd)), " \n\t");
-		if (!(line_empety(line)))
-		{
+		if (!(line_empety(line)) && (line[0] != '#'))
 			scene->file[i++] = line;
-		}
 		else
 			free(line);
 	}

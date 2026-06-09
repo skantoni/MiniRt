@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/02 15:18:09 by pavelino          #+#    #+#             */
-/*   Updated: 2026/06/09 13:11:25 by pavelino         ###   ########.fr       */
+/*   Created: 2026/06/02 18:44:22 by pavelino          #+#    #+#             */
+/*   Updated: 2026/06/02 18:45:43 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/minirt.h"
 
-#include "../../includes/minirt.h"
-
-void    read_file(char *file)
+void    init(t_scene *scene)
 {
-    int fd;
-    char    *line = NULL;
-
-    fd = open(file, O_RDONLY);
-	if (fd < 0)
-    {
-        write(2, "Error\n", 6);
-		return ;
-    }
-	write(1, "Sucessfull\n", 11);
-    while ((line = get_next_line(fd)))
-        printf("%s\n", line);
+    scene->has_ambient = 0;
 }

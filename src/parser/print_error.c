@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skantoni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:52:18 by skantoni          #+#    #+#             */
-/*   Updated: 2026/05/06 10:52:20 by skantoni         ###   ########.fr       */
+/*   Updated: 2026/06/02 15:03:09 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../includes/minirt.h"
 
 void	print_error(const char *prefix, const char *subject, const char *suffix)

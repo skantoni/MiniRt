@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 13:48:40 by skantoni          #+#    #+#             */
-/*   Updated: 2026/05/24 17:36:39 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/06/02 18:21:51 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,21 @@ int handle_escape(int keycode, t_mlx *mlx)
     if (keycode ==  65307)
         close_window(mlx);
     return (0);
+}
+
+void    free_split(char **str)
+{
+    int i;
+
+    i = 0;
+    if (!str)
+        return ;
+    while (str[i])
+    {
+        free(str[i]);
+        i++;
+    }
+    free(str[i]);
 }
 
 int	clean(t_mlx *mlx, t_scene *scene, int status)

@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/05/24 17:37:10 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/06/02 18:46:10 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2 || av[1][0] == '\0')
 		return (print_error("minirt", "Insira", "./miniRT scene.rt"), 1);
+	init(&scene);
 	if (parse_minirt(av[1], &scene))
 		return (1);
 	fd = open(av[1], O_RDONLY);
