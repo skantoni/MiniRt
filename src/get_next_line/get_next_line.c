@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skantoni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:28:36 by skantoni          #+#    #+#             */
-/*   Updated: 2025/08/08 17:28:41 by skantoni         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:43:19 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*ft_substr(char const *str, size_t s, size_t len)
@@ -73,7 +74,7 @@ char	*get_next_line(int fd)
 	guard = ft_read(fd, guard);
 	if (!guard)
 		return (NULL);
-	if (guard[0] <= 0)
+	if (guard[0] == '\0')
 	{
 		free(guard);
 		guard = NULL;

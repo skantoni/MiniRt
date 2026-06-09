@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 13:48:40 by skantoni          #+#    #+#             */
-/*   Updated: 2026/06/02 18:21:51 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:34:53 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ int	close_window(t_mlx *mlx)
 {
     if (mlx->win)
 	    mlx_destroy_window(mlx->mlx, mlx->win);
-    mlx_destroy_display(mlx->mlx);
-	exit(0);
+    if (mlx->mlx)
+    {
+        mlx_destroy_display(mlx->mlx);
+	    exit(0);
+    }
 	return (0);
 }
 
@@ -40,7 +43,7 @@ void    free_split(char **str)
         free(str[i]);
         i++;
     }
-    free(str[i]);
+    free(str);
 }
 
 int	clean(t_mlx *mlx, t_scene *scene, int status)
@@ -57,7 +60,9 @@ int	clean(t_mlx *mlx, t_scene *scene, int status)
         }
         free(scene->file);
     }
-	i = 0;
-    close_window(mlx);
+	if (mlx)
+    {
+        close_window(mlx);
+    }
 	return(status);
 }

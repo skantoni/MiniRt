@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:34:51 by skantoni          #+#    #+#             */
-/*   Updated: 2026/06/02 18:47:51 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:25:12 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ int		handle_escape(int keycode, t_mlx *mlx);
 int		close_window(t_mlx *mlx);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 void    free_split(char **str);
-void    init(t_scene *scene);
+void    init(t_scene *scene, t_mlx *mlx);
 
 #endif
