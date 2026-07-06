@@ -18,7 +18,7 @@ static int parse_line(char *line, t_scene *scene)
 	int		sign;
 
 	sign = 1;
-	if (ft_strncmp(line, "A", 2) == 0)
+	if (ft_strncmp(line, "A ", 2) == 0)
 		sign = parse_ambient(line, scene);
 	else if (ft_strncmp(line, "C ", 2) == 0)
 		return (printf("CAMERA\n"), 0);
@@ -56,8 +56,8 @@ static int	parse_file(char *av, t_scene *scene)
 	i = 0;
 	while (scene->file[i])
 		if (parse_line(scene->file[i++], scene))
-			return (freeStrArray(scene->file), print_error("Error", "Unknown identifier", 0),
-	printf("%s", scene->file[--i]), free(scene->file[i]), 1);
+			return (freeStrArray(scene->file), print_error("Error", "Unknown identifier", 0), 1);
+	//printf("%s", scene->file[--i]), free(scene->file[i]), 1);
 	if (!scene->has_ambient)
 	{
 		print_error("Erro", "Missing Light Ambient", 0);
