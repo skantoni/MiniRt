@@ -49,9 +49,7 @@ int	parse_ambient(char *line, t_scene *scene)
 	scene->ambient.color.r = ft_atoi(colors[0]);
 	scene->ambient.color.g = ft_atoi(colors[1]);
 	scene->ambient.color.b = ft_atoi(colors[2]);
-
 	scene->ambient.ratio = atof(tokens[1]);
-	
 	printf("Ratio -> %f\n", scene->ambient.ratio);
 	scene->has_ambient = 1;
 	return (0);
