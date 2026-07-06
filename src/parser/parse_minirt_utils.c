@@ -17,8 +17,6 @@ char	**tokenizer_info(char *line)
 {
 	char	**tokens;
 
-	if (!line)
-		return (NULL);
 	tokens = ft_split(line, ' ');
 	return (tokens);
 }

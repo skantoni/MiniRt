@@ -18,20 +18,18 @@ static int parse_line(char *line, t_scene *scene)
 	int		sign;
 
 	sign = 1;
-	if (ft_strncmp(tokens[0], "A", 2) == 0)
-		sign = parse_ambient(tokens, scene, &sign);
-	else if (ft_strncmp(tokens[0], "C ", 2) == 0)
-		return (printf("CAMERA\n"), free_split(tokens),  0);
-	else if (ft_strncmp(tokens[0], "L ", 2) == 0)
-		return (printf("LIGHT\n"), free_split(tokens), 0);
-	else if (ft_strncmp(tokens[0], "sp ", 3) == 0)
-		return (printf("SPHERE\n"), free_split(tokens), 0);
-	else if (ft_strncmp(tokens[0], "cy ", 3) == 0)
-		return (printf("CYLINDER\n"), free_split(tokens), 0);
-	else if (ft_strncmp(tokens[0], "pl ", 3) == 0)
-		return (printf("PLANE\n"),free_split(tokens), 0);
-	if (sing)
-
+	if (ft_strncmp(line, "A", 2) == 0)
+		sign = parse_ambient(line, scene);
+	else if (ft_strncmp(line, "C ", 2) == 0)
+		return (printf("CAMERA\n"));//, free_split(tokens),  0);
+	else if (ft_strncmp(line, "L ", 2) == 0)
+		return (printf("LIGHT\n"));//, free_split(tokens), 0);
+	else if (ft_strncmp(line, "sp ", 3) == 0)
+		return (printf("SPHERE\n"));//, free_split(tokens), 0);
+	else if (ft_strncmp(line, "cy ", 3) == 0)
+		return (printf("CYLINDER\n"));//, free_split(tokens), 0);
+	else if (ft_strncmp(line, "pl ", 3) == 0)
+		return (printf("PLANE\n"));//,free_split(tokens), 0);
 	return (sign);
 }
 
@@ -58,7 +56,7 @@ static int	parse_file(char *av, t_scene *scene)
 	i = 0;
 	while (scene->file[i])
 		if (parse_line(scene->file[i++], scene))
-			return (print_error("Error", "Unknown identifier", 0),
+			return (freeStrArray(scene->file), print_error("Error", "Unknown identifier", 0),
 	printf("%s", scene->file[--i]), free(scene->file[i]), 1);
 	if (!scene->has_ambient)
 	{

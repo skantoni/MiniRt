@@ -31,7 +31,7 @@ int handle_escape(int keycode, t_mlx *mlx)
     return (0);
 }
 
-void    free_split(char **str)
+void    freeStrArray(char **str)
 {
     int i;
 

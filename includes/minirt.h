@@ -67,9 +67,8 @@ typedef struct s_scene
 
 int		parse_extention(char *arg);
 int		parse_minirt(char *av, t_scene *scene);
-int		parse_ambient(char **tokens, t_scene *scene, int *sign);
+int		parse_ambient(char *line, t_scene *scene);
 int		count_l(char *path);
-char	**tokenizer_info(char *line);
 int		read_file(char *av, t_scene *scene);
 int		create_window(t_mlx *mlx);
 int		clean(t_mlx *mlx, t_scene *scene, int status);
@@ -78,5 +77,7 @@ int		close_window(t_mlx *mlx);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 void    free_split(char **str);
 void    init(t_scene *scene, t_mlx *mlx);
+void    freeStrArray(char **str);
+char	**tokenizer_info(char *line);
 
 #endif
