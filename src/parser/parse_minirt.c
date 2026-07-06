@@ -21,15 +21,15 @@ static int parse_line(char *line, t_scene *scene)
 	if (ft_strncmp(line, "A", 2) == 0)
 		sign = parse_ambient(line, scene);
 	else if (ft_strncmp(line, "C ", 2) == 0)
-		return (printf("CAMERA\n"));//, free_split(tokens),  0);
+		return (printf("CAMERA\n"), 0);
 	else if (ft_strncmp(line, "L ", 2) == 0)
-		return (printf("LIGHT\n"));//, free_split(tokens), 0);
+		return (printf("LIGHT\n"), 0);
 	else if (ft_strncmp(line, "sp ", 3) == 0)
-		return (printf("SPHERE\n"));//, free_split(tokens), 0);
+		return (printf("SPHERE\n"), 0);
 	else if (ft_strncmp(line, "cy ", 3) == 0)
-		return (printf("CYLINDER\n"));//, free_split(tokens), 0);
+		return (printf("CYLINDER\n"), 0);
 	else if (ft_strncmp(line, "pl ", 3) == 0)
-		return (printf("PLANE\n"));//,free_split(tokens), 0);
+		return (printf("PLANE\n"), 0);
 	return (sign);
 }
 
