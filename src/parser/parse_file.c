@@ -11,10 +11,14 @@
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
-#include <stdlib.h>
-
-int	parse_ambient(char **tokens, t_scene *scene)
+int	parse_ambient(char *line, t_scene *scene, int *sign)
 {
+/*		 --Formato
+	 A [ratio] [R,G,B]
+*/
+	char	**tokens;
+	tokens = tokenizer_info(line);
+
 	int	i;
 
 	i = 0;

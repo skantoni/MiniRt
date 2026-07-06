@@ -67,7 +67,7 @@ typedef struct s_scene
 
 int		parse_extention(char *arg);
 int		parse_minirt(char *av, t_scene *scene);
-int		parse_ambient(char **tokens, t_scene *scene);
+int		parse_ambient(char **tokens, t_scene *scene, int *sign);
 int		count_l(char *path);
 char	**tokenizer_info(char *line);
 int		read_file(char *av, t_scene *scene);
