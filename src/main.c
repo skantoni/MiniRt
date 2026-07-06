@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 11:37:37 by pavelino          #+#    #+#             */
-/*   Updated: 2026/06/09 15:25:51 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/06 18:30:47 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	init(&scene, &mlx);
 	if (parse_minirt(av[1], &scene))
 	{
-		clean(&mlx, &scene, 1);
+		/* clean(&mlx, &scene, 1); */
 		return (1);
 	}
 	fd = open(av[1], O_RDONLY);

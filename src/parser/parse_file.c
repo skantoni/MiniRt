@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 11:35:24 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/06 15:56:09 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/06 18:33:58 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	parse_ambient(char *line, t_scene *scene)
 		return (1);
 	}
 	colors = ft_split(tokens[2], ',');
-	if (parse_ratio(tokens[1]) || parse_colors(colors))
+	if (!parse_ratio(tokens[1]) || !parse_colors(colors))
 		return (1);
 	scene->ambient.color.r = ft_atoi(colors[0]);
 	scene->ambient.color.g = ft_atoi(colors[1]);

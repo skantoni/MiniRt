@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:34:51 by skantoni          #+#    #+#             */
-/*   Updated: 2026/06/09 15:25:12 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/06 17:33:45 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ void    free_split(char **str);
 void    init(t_scene *scene, t_mlx *mlx);
 void    freeStrArray(char **str);
 char	**tokenizer_info(char *line);
+int		parse_camera(char *line);
 
 #endif
