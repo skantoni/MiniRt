@@ -21,8 +21,8 @@ static int parse_line(char *line, t_scene *scene)
 	if (ft_strncmp(line, "A ", 2) == 0)
 		sign = parse_ambient(line, scene);
 	else if (ft_strncmp(line, "C ", 2) == 0)
-		return (printf("CAMERA\n"), 0);
-		//sign = parse_camera(line);
+		sign = parse_camera(line);
+	//return (printf("CAMERA\n"), 0);
 	else if (ft_strncmp(line, "L ", 2) == 0)
 		return (printf("LIGHT\n"), 0);
 	else if (ft_strncmp(line, "sp ", 3) == 0)
@@ -58,7 +58,7 @@ static int	parse_file(char *av, t_scene *scene)
 	while (scene->file[i])
 	{
 		if (parse_line(scene->file[i++], scene))
-			return (print_error("Error", "Unknown identifier", 0), 1);
+			return (print_error("Error", "Unknown identifier", NULL), 1);
 	}
 	return (0);
 }
