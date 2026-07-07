@@ -37,6 +37,7 @@ int	parse_extention(char *av)
 {
 	char	*str;
 
+
 	str = ft_strrchr(av, '.');
 	if (ft_strncmp(".rt", str, 4) == 0)
 		return (0);
