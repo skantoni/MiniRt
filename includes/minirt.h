@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:34:51 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/07 14:34:23 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/07 16:13:41 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		create_window(t_mlx *mlx);
 int		clean(t_mlx *mlx, t_scene *scene, int status);
 int		handle_escape(int keycode, t_mlx *mlx);
 int		close_window(t_mlx *mlx);
-int		parse_camera(char *line);
+int		parse_camera(char *line, t_scene *scene);
 int 	count_tokens(char **tokens);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 void    init(t_scene *scene, t_mlx *mlx);
