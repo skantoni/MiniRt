@@ -35,6 +35,10 @@ int parse_camera(char *line)
     if (!tokens)
         return (1);
     if (count_tokens(tokens) != 4)
+    {
+        free_str_array(tokens);
         return (print_error("Error: ", "is missing tokens, check the in line camera", NULL), 1);
+    }
+    free_str_array(tokens);
     return (0);
 }

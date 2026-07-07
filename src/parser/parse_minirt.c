@@ -20,8 +20,9 @@ static int parse_line(char *line, t_scene *scene)
 	sign = 1;
 	if (ft_strncmp(line, "A ", 2) == 0)
 		sign = parse_ambient(line, scene);
-	if (ft_strncmp(line, "C ", 2) == 0)
-		sign = parse_camera(line);
+	else if (ft_strncmp(line, "C ", 2) == 0)
+		return (printf("CAMERA\n"), 0);
+		//sign = parse_camera(line);
 	else if (ft_strncmp(line, "L ", 2) == 0)
 		return (printf("LIGHT\n"), 0);
 	else if (ft_strncmp(line, "sp ", 3) == 0)
@@ -36,7 +37,6 @@ static int parse_line(char *line, t_scene *scene)
 int	parse_extention(char *av)
 {
 	char	*str;
-
 
 	str = ft_strrchr(av, '.');
 	if (ft_strncmp(".rt", str, 4) == 0)
@@ -56,14 +56,9 @@ static int	parse_file(char *av, t_scene *scene)
 	}
 	i = 0;
 	while (scene->file[i])
-		if (parse_line(scene->file[i++], scene))
-			return (freeStrArray(scene->file), print_error("Error", "Unknown identifier", 0), 1);
-	//printf("%s", scene->file[--i]), free(scene->file[i]), 1);
-	if (!scene->has_ambient)
 	{
-		print_error("Erro", "Missing Light Ambient", 0);
-		
-		return (1);
+		if (parse_line(scene->file[i++], scene))
+			return (print_error("Error", "Unknown identifier", 0), 1);
 	}
 	return (0);
 }

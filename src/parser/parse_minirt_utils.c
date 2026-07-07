@@ -12,15 +12,6 @@
 
 #include "../../includes/minirt.h"	
 
-
-char	**tokenizer_info(char *line)
-{
-	char	**tokens;
-
-	tokens = ft_split(line, ' ');
-	return (tokens);
-}
-
 static int	line_empety(char *str)
 {
 	int	i;

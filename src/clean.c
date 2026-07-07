@@ -31,21 +31,6 @@ int handle_escape(int keycode, t_mlx *mlx)
     return (0);
 }
 
-void    freeStrArray(char **str)
-{
-    int i;
-
-    i = 0;
-    if (!str)
-        return ;
-    while (str[i])
-    {
-        free(str[i]);
-        i++;
-    }
-    free(str);
-}
-
 int	clean(t_mlx *mlx, t_scene *scene, int status)
 {
 	int	i;
@@ -59,6 +44,7 @@ int	clean(t_mlx *mlx, t_scene *scene, int status)
             i++;
         }
         free(scene->file);
+        scene->file = NULL;
     }
 	if (mlx)
     {
