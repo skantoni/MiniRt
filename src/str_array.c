@@ -27,16 +27,3 @@ void	free_str_array(char **str)
 	free(str);
 }
 
-int	count_str_array(char **str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-}
