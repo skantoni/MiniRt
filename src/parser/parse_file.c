@@ -6,11 +6,11 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 11:35:24 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/06 18:33:58 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/07 14:30:55 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "minirt.h"
 
 int	parse_ratio(char **tokens, int len, t_scene *scene)
 {

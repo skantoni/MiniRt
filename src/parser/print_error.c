@@ -6,11 +6,11 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:52:18 by skantoni          #+#    #+#             */
-/*   Updated: 2026/06/02 15:03:09 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/07 14:30:40 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "minirt.h"
 
 void	print_error(const char *prefix, const char *subject, const char *suffix)
 {

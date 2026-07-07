@@ -6,12 +6,12 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 15:18:09 by pavelino          #+#    #+#             */
-/*   Updated: 2026/06/09 13:11:25 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/07 14:30:40 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../../includes/minirt.h"
+#include "minirt.h"
 
 void    read_file(char *file)
 {

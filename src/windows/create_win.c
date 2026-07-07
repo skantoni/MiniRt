@@ -6,11 +6,11 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 16:48:56 by pavelino          #+#    #+#             */
-/*   Updated: 2026/05/23 14:42:07 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/07 14:30:40 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "minirt.h"
 
 int	create_window(t_mlx *mlx)
 {

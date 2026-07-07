@@ -6,11 +6,11 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 12:09:44 by skantoni          #+#    #+#             */
-/*   Updated: 2026/06/09 14:01:28 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/07 14:30:40 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"	
+#include "minirt.h"	
 
 static int	line_empety(char *str)
 {
