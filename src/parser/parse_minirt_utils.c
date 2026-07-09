@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 12:09:44 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/07 14:30:40 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/09 14:05:57 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,9 @@ int	read_file(char *av, t_scene *scene)
 			free(line);
 	}
 	scene->file[i] = NULL;
-	i = 0;
-	while (scene->file[i])
-	{
-		printf("linha : %s\n", scene->file[i]);
-		i++;
-	}
+	i = -1;
+	while (scene->file[i++])
+		printf("linha[%d] : %s\n", i, scene->file[i]);
 	close(fd);
 	return (0);
 }

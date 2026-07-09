@@ -6,16 +6,15 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 17:12:00 by pavelino          #+#    #+#             */
-/*   Updated: 2026/07/07 16:12:31 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/09 14:12:10 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static int parse_line(char *line, t_scene *scene)
+static int	parse_line(char *line, t_scene *scene)
 {
-	(void)scene;
-	int		sign = 0;
+	int		sign;
 
 	sign = 1;
 	if (ft_strncmp(line, "A ", 2) == 0)
@@ -43,16 +42,13 @@ int	parse_extention(char *av)
 	print_error("Error", "Invalid file extension", NULL);
 	return (1);
 }
-	
+
 static int	parse_file(char *av, t_scene *scene)
 {
 	int	i;
 
 	if (read_file(av, scene))
-	{
-		//Nao preciso liberar nada
 		return (1);
-	}
 	i = 0;
 	while (scene->file[i])
 	{
