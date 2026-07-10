@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 11:35:24 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/07 14:30:55 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/10 17:29:11 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	parse_ratio(char **tokens, int len, t_scene *scene)
 			return (1);
 		i++;
 	}
-	scene->ambient.ratio = atof(tokens[1]);
+	scene->ambient.ratio = ft_atof(tokens[1]);
 	if ((scene->ambient.ratio < 0 || scene->ambient.ratio > 1) || delimiter_count > 1)
 		return (1);
 	return (0);

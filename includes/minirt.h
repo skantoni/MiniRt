@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:34:51 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/07 16:13:41 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/10 17:50:57 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_light
 {
 	t_vec3	position;
 	double	brightness;
-	int		color;
+	t_color	color;
 }	t_light;
 
 typedef struct s_ambient
@@ -68,6 +68,7 @@ typedef struct s_scene
 int		parse_extention(char *arg);
 int		parse_minirt(char *av, t_scene *scene);
 int		parse_ambient(char *line, t_scene *scene);
+int		parse_light(char *line, t_scene *scene);
 int		count_l(char *path);
 int		read_file(char *av, t_scene *scene);
 int		create_window(t_mlx *mlx);

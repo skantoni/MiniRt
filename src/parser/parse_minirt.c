@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 17:12:00 by pavelino          #+#    #+#             */
-/*   Updated: 2026/07/09 14:12:10 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/10 17:41:04 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	parse_line(char *line, t_scene *scene)
 	else if (ft_strncmp(line, "C ", 2) == 0)
 		sign = parse_camera(line, scene);
 	else if (ft_strncmp(line, "L ", 2) == 0)
-		return (printf("LIGHT\n"), 0);
+		sign = parse_light(line, scene);
 	else if (ft_strncmp(line, "sp ", 3) == 0)
 		return (printf("SPHERE\n"), 0);
 	else if (ft_strncmp(line, "cy ", 3) == 0)

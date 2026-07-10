@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pavelino <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:01:04 by pavelino          #+#    #+#             */
-/*   Updated: 2025/06/28 11:02:26 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/10 17:23:22 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ char	*ft_strtrim(char *s1, char *set)
 		return (NULL);
 	i = 0;
 	while (inicio < fim)
-	{
-		str[i] = s1[inicio];
-		i++;
-		inicio++;
-	}
+		str[i++] = s1[inicio++];
 	str[i] = '\0';
 	if (s1)
 		free(s1);
