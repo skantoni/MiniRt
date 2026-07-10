@@ -15,10 +15,10 @@
 int	parse_ratio(char **tokens, int len, t_scene *scene)
 {
 	int	i;
-	int	ponto;
+	int	delimiter_count;
 
 	i = 0;
-	ponto = 0;
+	delimiter_count = 0;
 	if (len != 3)
 		return (1);
 	if (tokens[1][0] > '9' || tokens[1][0] < '0')
@@ -26,41 +26,63 @@ int	parse_ratio(char **tokens, int len, t_scene *scene)
 	while (tokens[1][i])
 	{
 		if (tokens[1][i] == '.')
-			ponto++;
+			delimiter_count++;
 		else if ((tokens[1][i] < '0' || tokens[1][i] > '9'))
 			return (1);
 		i++;
 	}
 	scene->ambient.ratio = atof(tokens[1]);
-	if ((scene->ambient.ratio < 0 || scene->ambient.ratio > 1) || ponto > 1)
+	if ((scene->ambient.ratio < 0 || scene->ambient.ratio > 1) || delimiter_count > 1)
 		return (1);
+	return (0);
+}
+
+int	parse_tokens(char **tokens, t_scene *scene)
+{
+	long	r;
+	long	g;
+	long	b;
+	char	**sub_tokens;
+
+	sub_tokens = ft_split(tokens[2], ',');
+	if (!sub_tokens)
+		return (1);
+	r = ft_atol(sub_tokens[0]);
+	g = ft_atol(sub_tokens[1]);
+	b = ft_atol(sub_tokens[2]);
+	if ((r > 255 || r < 0) || (g > 255 || g < 0) || (b > 255 || b < 0))
+	{
+		free_str_array(sub_tokens);
+		return (1);
+	}
+	scene->ambient.color.r = (int)r;
+	scene->ambient.color.g = (int)g;
+	scene->ambient.color.b = (int)b;
+	free_str_array(sub_tokens);
 	return (0);
 }
 
 int	parse_colors(char **tokens, int len, t_scene *scene)
 {
 	int	i;
+	int	delimiter_count;
 
 	i = 0;
+	delimiter_count = 0;
 	if (len != 3)
 		return (1);
-	while (tokens[2][i])
+ 	while (tokens[2][i])
 	{
+		if (tokens[2][i] == ',')
+			delimiter_count++;
 		if (tokens[2][0] > '9' || tokens[2][0] < '0')
-		{
-			print_error("Error: ", "Formato de cor inválido;", NULL);
 			return (1);
-		}
 		if (tokens[2][i] != ',' && (tokens[2][i] < '0' || tokens[2][i] > '9'))
-		{
-			print_error("Error: ", "Formato de cor inválido;", NULL);
 			return (1);
-		}
 		i++;
 	}
-	scene->ambient.color.r = ft_atoi((ft_split(tokens[2], ','))[0]);
-	scene->ambient.color.g = ft_atoi((ft_split(tokens[2], ','))[1]);
-	scene->ambient.color.b = ft_atoi((ft_split(tokens[2], ','))[2]);
+	if (delimiter_count != 2 || parse_tokens(tokens, scene))
+		return (1);
 	return (0);
 }
 
