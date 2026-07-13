@@ -24,6 +24,7 @@ static int	parse_line(char *line, t_scene *scene)
 	else if (ft_strncmp(line, "L ", 2) == 0)
 		sign = parse_light(line, scene);
 	else if (ft_strncmp(line, "sp ", 3) == 0)
+		//sign = parse_sphere(line, scene);
 		return (printf("SPHERE\n"), 0);
 	else if (ft_strncmp(line, "cy ", 3) == 0)
 		return (printf("CYLINDER\n"), 0);

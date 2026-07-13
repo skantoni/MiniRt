@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_file.c                                       :+:      :+:    :+:   */
+/*   parse_ambient.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skantoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/11 11:35:24 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/10 17:29:11 by pavelino         ###   ########.fr       */
+/*   Created: 2026/07/13 09:01:30 by skantoni          #+#    #+#             */
+/*   Updated: 2026/07/13 09:01:32 by skantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	parse_ratio(char **tokens, int len, t_scene *scene)
 		i++;
 	}
 	scene->ambient.ratio = ft_atof(tokens[1]);
-	if ((scene->ambient.ratio < 0 || scene->ambient.ratio > 1) || delimiter_count > 1)
+	if ((scene->ambient.ratio < 0
+			|| scene->ambient.ratio > 1) || delimiter_count > 1)
 		return (1);
 	return (0);
 }
@@ -71,7 +72,7 @@ int	parse_colors(char **tokens, int len, t_scene *scene)
 	delimiter_count = 0;
 	if (len != 3)
 		return (1);
- 	while (tokens[2][i])
+	while (tokens[2][i])
 	{
 		if (tokens[2][i] == ',')
 			delimiter_count++;
