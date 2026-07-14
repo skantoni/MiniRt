@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 17:12:00 by pavelino          #+#    #+#             */
-/*   Updated: 2026/07/14 12:33:08 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/14 15:03:36 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static int	parse_line(char *line, t_scene *scene)
 	else if (ft_strncmp(line, "cy ", 3) == 0)
 		return (printf("CYLINDER\n"), 0);
 	else if (ft_strncmp(line, "pl ", 3) == 0)
-		//sign = parse_plane(line, scene);
-		return (printf("PLANE\n"), 0);
+		sign = parse_plane(line, scene);
+		/* return (printf("PLANE\n"), 0); */
 	return (sign);
 }
 
