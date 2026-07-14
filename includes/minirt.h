@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:34:51 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/10 17:50:57 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/14 12:21:35 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
+# include <math.h>
 # include "minilibx-linux/mlx.h"
 # include "../src/libft/libft.h"
 # include "../src/get_next_line/get_next_line.h"
@@ -79,8 +80,11 @@ int		parse_camera(char *line, t_scene *scene);
 int 	count_tokens(char **tokens);
 int     parse_sphere(char *line, t_scene *scene);
 int		parse_vec3(char *str, t_vec3 *vec);
+int		parse_plane(char *line, t_scene *scene);
+int		check_del(char *str, char del, int n);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 void    init(t_scene *scene, t_mlx *mlx);
 void	free_str_array(char **str);
+t_vec3	vec3_normalize(t_vec3 v);
 
 #endif

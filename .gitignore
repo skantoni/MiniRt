@@ -15,3 +15,5 @@ miniRT
 
 #ignorar meus(skeny) files
 *.sk
+
+*a.out
