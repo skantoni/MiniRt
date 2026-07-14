@@ -12,67 +12,42 @@
 
 #include "libft.h"
 
-int	valid_sign(char nptr, int *i)
+static double	parse_decimal(char **str)
 {
-	if (nptr == '-' || nptr == '+')
+	double	res;
+	double	divisor;
+
+	res = 0.0;
+	divisor = 10.0;
+	if (**str == '.')
+		(*str)++;
+	while (ft_isdigit(**str))
 	{
-		if (nptr == '-')
-		{
-			(*i)++;
-			return (-1);
-		}
-		(*i)++;
+		res += (**str - '0') / divisor;
+		divisor *= 10.0;
+		(*str)++;
 	}
-	return (1);
+	return (res);
 }
 
-void	decima_cal(int *point, double *resp, char *nptr)
+double	ft_atof(char *str)
 {
-	static double	peso;
+	double	res;
+	int		sign;
 
-	peso = 0.1;
-	if (*point == 1)
+	res = 0.0;
+	sign = 1;
+	if (*str == '+' || *str == '-')
 	{
-		*resp = *resp + (*nptr - 48) * peso;
-		peso = peso / 10.0;
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
-	else
-		*resp = *resp * 10 + (*nptr - 48);
-}
-
-void	check_dot(char nptr, int *i, int *point)
-{
-	if (nptr == '.')
+	while (ft_isdigit(*str))
 	{
-		*point = 1;
-		(*i)++;
+		res = res * 10 + (*str - '0');
+		str++;
 	}
-}
-
-double	ft_atof(char *nptr)
-{
-	double	resp;
-	int		sinal;
-	int		i;
-	int		point;
-
-	resp = 0.0;
-	sinal = 1;
-	i = 0;
-	point = 0;
-	while ((nptr[i] == ' ' || nptr[i] == '\t'))
-		i++;
-	sinal = valid_sign(nptr[i], &i);
-	if (!ft_isdigit(nptr[i]))
-		return (resp);
-	while (nptr[i])
-	{
-		check_dot(nptr[i], &i, &point);
-		if (ft_isdigit(nptr[i]))
-			decima_cal(&point, &resp, &nptr[i]);
-		else
-			return (sinal * resp);
-		i++;
-	}
-	return (sinal * resp);
+	res += parse_decimal(&str);
+	return (res * sign);
 }

@@ -44,25 +44,6 @@ int	parse_position(char *position, t_camera *cam)
 	return (0);
 }
 
-int	parse_orientation(char *orientation, t_camera *cam)
-{
-	char	**sub_tokens_ori;
-
-	sub_tokens_ori = ft_split(orientation, ',');
-	if (!sub_tokens_ori)
-		return (1);
-	if (count_tokens(sub_tokens_ori) != 3)
-	{
-		free_str_array(sub_tokens_ori);
-		return (print_error("Error: ", "Wrong sub-tokens to ori.", NULL), 1);
-	}
-	cam->orientation.x = ft_atof(sub_tokens_ori[0]);
-	cam->orientation.y = ft_atof(sub_tokens_ori[1]);
-	cam->orientation.z = ft_atof(sub_tokens_ori[2]);
-	free_str_array(sub_tokens_ori);
-	return (0);
-}
-
 int	parse_camera(char *line, t_scene *scene)
 {
 	char	**tokens;
@@ -75,8 +56,8 @@ int	parse_camera(char *line, t_scene *scene)
 		free_str_array(tokens);
 		return (print_error("Error:", "must have 4 tokens camera", NULL), 1);
 	}
-	if (parse_position(tokens[1], &scene->camera)
-		|| parse_orientation(tokens[2], &scene->camera))
+	if (parse_vec3(tokens[1], &scene->camera.position)
+		|| parse_vec3(tokens[2], &scene->camera.orientation))
 		return (free_str_array(tokens), 1);
 	scene->camera.fov = ft_atof(tokens[3]);
 	free_str_array(tokens);

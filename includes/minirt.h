@@ -77,6 +77,8 @@ int		handle_escape(int keycode, t_mlx *mlx);
 int		close_window(t_mlx *mlx);
 int		parse_camera(char *line, t_scene *scene);
 int 	count_tokens(char **tokens);
+int     parse_sphere(char *line, t_scene *scene);
+int		parse_vec3(char *str, t_vec3 *vec);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 void    init(t_scene *scene, t_mlx *mlx);
 void	free_str_array(char **str);

@@ -38,7 +38,7 @@ int	parse_ratio(char **tokens, int len, t_scene *scene)
 	return (0);
 }
 
-int	parse_tokens(char **tokens, t_scene *scene)
+static int	parse_tokens(char **tokens, t_scene *scene)
 {
 	long	r;
 	long	g;
@@ -102,7 +102,6 @@ int	parse_ambient(char *line, t_scene *scene)
 		return (1);
 	}
 	tokens_len = count_tokens(tokens);
-	printf("Tokens len -> %d\n", tokens_len);
 	if (parse_ratio(tokens, tokens_len, scene)
 		|| parse_colors(tokens, tokens_len, scene))
 	{
