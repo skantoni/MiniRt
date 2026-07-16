@@ -49,9 +49,9 @@ typedef struct s_cylinder
 {
 	t_vec3					center;
 	t_vec3					normal;
+	t_color					color;
 	double					diameter;
 	double					height;
-	int						color;
 	struct s_cylinder		*next;
 }	t_cylinder;
 

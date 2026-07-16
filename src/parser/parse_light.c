@@ -22,7 +22,7 @@ static int	parse_position(char *token, t_scene *scene)
 	if (count_tokens(sub_tokens) != 3)
 	{
 		free_str_array(sub_tokens);
-		return (print_error("Error:", "Invalid pos. tokens", NULL), 1);
+		return (printf("Error\nInvalid pos. tokens"), 1);
 	}
 	scene->light.position.x = ft_atof(sub_tokens[0]);
 	scene->light.position.y = ft_atof(sub_tokens[1]);
@@ -44,7 +44,7 @@ static int	parse_color_light(char *tokens, t_scene *scene)
 	if (count_tokens(sub_tokens) != 3)
 	{
 		free_str_array(sub_tokens);
-		return (print_error("Error:", "Invalid col. tokens", NULL), 1);
+		return (printf("Error\nInvalid col. tokens"), 1);
 	}
 	r = ft_atol(sub_tokens[0]);
 	g = ft_atol(sub_tokens[1]);
@@ -68,7 +68,7 @@ int	parse_light(char *line, t_scene *scene)
 	if (count_tokens(tokens) != 4)
 	{
 		free_str_array(tokens);
-		return (print_error("Error: ", "Invalid light tokens", NULL), 1);
+		return (printf("Error\nInvalid light tokens"), 1);
 	}
 	if (parse_position(tokens[1], scene)
 		|| parse_color_light(tokens[3], scene))
@@ -78,7 +78,7 @@ int	parse_light(char *line, t_scene *scene)
 		|| scene->light.brightness > 1.0)
 	{
 		free_str_array(tokens);
-		return (print_error("Error: ", "Out of range [0.0, 1.0]", NULL), 1);
+		return (printf("Error\nLight brightness out of range [0.0, 1.0]"), 1);
 	}
 	free_str_array(tokens);
 	return (0);

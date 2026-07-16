@@ -12,92 +12,87 @@
 
 #include "minirt.h"
 
-static int	is_valid_color_token(char *token)
+static int	check_color_range(long r, long g, long b)
 {
-	int	idx;
-
-	if (!token || !*token)
-		return (0);
-	idx = 0;
-	while (token[idx])
-	{
-		if (!ft_isdigit(token[idx]))
-			return (0);
-		idx++;
-	}
-	return (1);
+	return ((r >= 0 && r <= 255) && (g >= 0 && g <= 255)
+		&& (b >= 0 && b <= 255));
 }
 
 static int	parse_cylinder_color(char *token, t_cylinder *cylinder)
 {
 	char	**sub_tokens;
-	long	r;
-	long	g;
-	long	b;
+	long	rgb[3];
+	int		i;
 
 	if (check_del(token, ',', 2))
 		return (1);
 	sub_tokens = ft_split(token, ',');
 	if (!sub_tokens || count_tokens(sub_tokens) != 3)
 		return (free_str_array(sub_tokens), 1);
-	if (!is_valid_color_token(sub_tokens[0])
-		|| !is_valid_color_token(sub_tokens[1])
-		|| !is_valid_color_token(sub_tokens[2]))
+	i = 0;
+	while (i < 3)
+	{
+		if (!ft_isdigit(sub_tokens[i][0]))
+			return (free_str_array(sub_tokens), 1);
+		rgb[i] = ft_atol(sub_tokens[i]);
+		i++;
+	}
+	if (!check_color_range(rgb[0], rgb[1], rgb[2]))
 		return (free_str_array(sub_tokens), 1);
-	r = ft_atol(sub_tokens[0]);
-	g = ft_atol(sub_tokens[1]);
-	b = ft_atol(sub_tokens[2]);
-	if ((r > 255 || r < 0) || (g > 255 || g < 0) || (b > 255 || b < 0))
-		return (free_str_array(sub_tokens), 1);
-	cylinder->color = ((int)r << 16) | ((int)g << 8) | (int)b;
-	free_str_array(sub_tokens);
-	return (0);
+	cylinder->color.r = (int)rgb[0];
+	cylinder->color.g = (int)rgb[1];
+	cylinder->color.b = (int)rgb[2];
+	return (free_str_array(sub_tokens), 0);
 }
 
 static int	validate_orientation(t_vec3 normal)
 {
 	if (normal.x < -1.0 || normal.x > 1.0)
-		return (0);
+		return (1);
 	if (normal.y < -1.0 || normal.y > 1.0)
-		return (0);
+		return (1);
 	if (normal.z < -1.0 || normal.z > 1.0)
-		return (0);
+		return (1);
 	if (normal.x == 0.0 && normal.y == 0.0 && normal.z == 0.0)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
+}
+
+static int	validate_dimensions(t_cylinder *cyl)
+{
+	if (cyl->diameter <= 0 || cyl->height <= 0)
+		return (printf("Error\nInvalid cylinder dimensions"), 1);
+	return (0);
 }
 
 int	parse_cylinder(char *line, t_scene *scene)
 {
 	char		**tokens;
-	t_cylinder	*new_cylinder;
+	t_cylinder	*cyl;
 
 	tokens = ft_split(line, ' ');
 	if (!tokens || count_tokens(tokens) != 6)
 		return (free_str_array(tokens), 1);
-	new_cylinder = malloc(sizeof(t_cylinder));
-	if (!new_cylinder)
+	cyl = malloc(sizeof(t_cylinder));
+	if (!cyl)
 		return (free_str_array(tokens), 1);
-	new_cylinder->next = NULL;
-	if (parse_vec3(tokens[1], &new_cylinder->center)
-		|| parse_vec3(tokens[2], &new_cylinder->normal)
-		|| !validate_orientation(new_cylinder->normal)
-		|| parse_cylinder_color(tokens[5], new_cylinder))
-		return (free(new_cylinder), free_str_array(tokens), 1);
-	new_cylinder->normal = vec3_normalize(new_cylinder->normal);
-	new_cylinder->diameter = ft_atof(tokens[3]);
-	new_cylinder->height = ft_atof(tokens[4]);
-	if (new_cylinder->diameter <= 0 || new_cylinder->height <= 0)
-		return (free(new_cylinder), free_str_array(tokens), 1);
-	new_cylinder->next = scene->cylinders;
-	scene->cylinders = new_cylinder;
-	printf("CYLINDER: center(%.2f, %.2f, %.2f), normal(%.2f, %.2f, %.2f), diameter(%.2f), height(%.2f), color(%.2f, %.2f, %.2f)\n",
-		new_cylinder->center.x, new_cylinder->center.y, new_cylinder->center.z,
-		new_cylinder->normal.x, new_cylinder->normal.y, new_cylinder->normal.z,
-		new_cylinder->diameter, new_cylinder->height, 
-		(float)((new_cylinder->color >> 16) & 0xFF) / 255.0,
-		(float)((new_cylinder->color >> 8) & 0xFF) / 255.0,
-		(float)(new_cylinder->color & 0xFF) / 255.0);
-	free_str_array(tokens);
-	return (0);
+	cyl->next = NULL;
+	if (parse_vec3(tokens[1], &cyl->center)
+		|| parse_vec3(tokens[2], &cyl->normal)
+		|| validate_orientation(cyl->normal)
+		|| parse_cylinder_color(tokens[5], cyl))
+		return (free(cyl), free_str_array(tokens), 1);
+	cyl->normal = vec3_normalize(cyl->normal);
+	cyl->diameter = ft_atof(tokens[3]);
+	cyl->height = ft_atof(tokens[4]);
+	if (validate_dimensions(cyl))
+		return (free(cyl), free_str_array(tokens), 1);
+	cyl->next = scene->cylinders;
+	scene->cylinders = cyl;
+	printf("CYLINDER: center(%.2f, %.2f, %.2f), normal(%.2f, %.2f, %.2f), diameter(%.2f), height(%.2f), color(%d, %d, %d)\n",
+		cyl->center.x, cyl->center.y, cyl->center.z,
+		cyl->normal.x, cyl->normal.y, cyl->normal.z,
+		cyl->diameter, cyl->height,
+		cyl->color.r, cyl->color.g, cyl->color.b);
+	return (free_str_array(tokens), 0);
 }

@@ -98,14 +98,14 @@ int	parse_ambient(char *line, t_scene *scene)
 	if (scene->has_ambient)
 	{
 		free_str_array(tokens);
-		print_error("Error", "Luz ambiente duplicada!", NULL);
+		printf("Error\nLuz ambiente duplicada!");
 		return (1);
 	}
 	tokens_len = count_tokens(tokens);
 	if (parse_ratio(tokens, tokens_len, scene)
 		|| parse_colors(tokens, tokens_len, scene))
 	{
-		print_error("Error: ", "Formato de luz ambiente inválido;", NULL);
+		printf("Error\nFormato de luz ambiente inválido;");
 		free_str_array(tokens);
 		return (1);
 	}

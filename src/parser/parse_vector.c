@@ -60,7 +60,10 @@ int	parse_vec3(char *str, t_vec3 *vec)
 	if (!sub_tokens)
 		return (1);
 	if (count_tokens(sub_tokens) != 3)
+	{
+		printf("Error\nInvalid vec3 tokens");
 		return (free_str_array(sub_tokens), 1);
+	}
 	if (!is_valid_double(sub_tokens[0])
 		|| !is_valid_double(sub_tokens[1])
 		|| !is_valid_double(sub_tokens[2]))

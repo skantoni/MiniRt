@@ -41,7 +41,10 @@ int	parse_sphere_color(char *color_str, t_sphere *sphere)
 	while (i < 3)
 	{
 		if (!is_valid_color_token(sub_tokens[i]))
+		{
+			printf("Error\nInvalid color token");
 			return (free_str_array(sub_tokens), 1);
+		}
 		values[i] = ft_atoi(sub_tokens[i]);
 		if (values[i] < 0 || values[i] > 255)
 			return (free_str_array(sub_tokens), 1);
@@ -70,7 +73,10 @@ int	parse_sphere(char *line, t_scene *scene)
 		return (free(new_sphere), free_str_array(tokens), 1);
 	new_sphere->diameter = ft_atof(tokens[2]);
 	if (new_sphere->diameter <= 0)
+	{
+		printf("Error\nInvalid sphere diameter");
 		return (free(new_sphere), free_str_array(tokens), 1);
+	}
 	new_sphere->next = scene->spheres;
 	scene->spheres = new_sphere;
 	printf("SPHERE: center(%.2f, %.2f, %.2f), diameter(%.2f), color(%d, %d, %d)\n",

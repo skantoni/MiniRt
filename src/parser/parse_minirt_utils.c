@@ -60,35 +60,25 @@ int	read_file(char *av, t_scene *scene)
 	int		i;
 	char	*line;
 
-	fd = open(av, O_RDONLY);
-	i = 0;
 	scene->line_count = count_l(av);
+	if (scene->line_count <= 0)
+		return (printf("Error\nFile %s is empty", av), 1);
+	fd = open(av, O_RDONLY);
+	if (fd < 0)
+		return (printf("Error\nFailed to open file %s", av), 1);
 	scene->file = malloc(sizeof(char *) * (scene->line_count + 1));
 	if (!scene->file)
-		return (1);
-	while (i < scene->line_count)
-	{
-		line = get_next_line(fd);
-		if (!line)
+		return (close(fd), 1);
+	i = 0;
+	while (i < scene->line_count) {
+		if (!(line = get_next_line(fd)))
 			break;
 		line = ft_strtrim(line, " \n\t");
 		if (!(line_empety(line)) && (line[0] != '#'))
-		{
-			scene->file[i] = line;
-			i++;
-		}
+			scene->file[i++] = line;
 		else
 			free(line);
 	}
 	scene->file[i] = NULL;
-	i = 0;
-		i = 0;
-	while (scene->file[i])
-	{
-		printf("linha[%d] : %s\n", i + 1, scene->file[i]);
-		fflush(stdout);
-		i++;
-	}
-	close(fd);
-	return (0);
+	return (close(fd), 0);
 }

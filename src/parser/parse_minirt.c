@@ -29,6 +29,11 @@ static int	parse_line(char *line, t_scene *scene)
 		sign = parse_cylinder(line, scene);
 	else if (ft_strncmp(line, "pl ", 3) == 0)
 		sign = parse_plane(line, scene);
+	else
+	{
+		printf("Error\nUnknown identifier: %s", line);
+		sign = 1;
+	}
 	return (sign);
 }
 
@@ -39,7 +44,7 @@ int	parse_extention(char *av)
 	str = ft_strrchr(av, '.');
 	if (ft_strncmp(".rt", str, 4) == 0)
 		return (0);
-	print_error("Error", "Invalid file extension", NULL);
+	printf("Error\nInvalid file extension");
 	return (1);
 }
 
@@ -53,7 +58,7 @@ static int	parse_file(char *av, t_scene *scene)
 	while (scene->file[i])
 	{
 		if (parse_line(scene->file[i++], scene))
-			return (print_error("Error", "Unknown identifier", NULL), 1);
+			return (/*print_error("Error", "Unknown identifier", NULL),*/ 1);
 	}
 	return (0);
 }

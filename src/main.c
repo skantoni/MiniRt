@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 	t_scene scene;
 
 	if (ac != 2 || av[1][0] == '\0')
-		return (print_error("minirt", "Insira", "./miniRT scene.rt"), 1);
+		return (printf("Error\nInsira o nome do arquivo de cena: ./miniRT scene.rt"), 1);
 	init(&scene, &mlx);
 	if (parse_minirt(av[1], &scene))
 		return (clean(&mlx, &scene, 1), 1);

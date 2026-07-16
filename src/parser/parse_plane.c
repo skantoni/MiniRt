@@ -20,10 +20,10 @@ static int  parse_color_plane(char *token, t_plane *plane)
     long    b;
 
     if (check_del(token, ',', 2))
-        return (print_error("Error:", "invalid format color", NULL), 1);
+        return (printf("Error\ninvalid format color"), 1);
     sub_token = ft_split(token, ',');
     if (!sub_token || count_tokens(sub_token) != 3)
-        return (print_error("Error:", "Invalid token", NULL), 1);
+        return (printf("Error\nInvalid token"), 1);
     r = ft_atol(sub_token[0]);
     g = ft_atol(sub_token[1]);
     b = ft_atol(sub_token[2]);
@@ -44,7 +44,7 @@ int parse_plane(char *line, t_scene *scene)
     if (!tokens || count_tokens(tokens) != 4)
     {
         free_str_array(tokens);
-        return (print_error("Error: ", "Invalid tokens to plane", NULL), 1);
+        return (printf("Error\nInvalid tokens to plane"), 1);
     }
     new_plane = malloc(sizeof(t_plane));
     if (!new_plane)
