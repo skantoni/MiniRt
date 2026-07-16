@@ -27,10 +27,8 @@ static int	parse_line(char *line, t_scene *scene)
 		sign = parse_sphere(line, scene);
 	else if (ft_strncmp(line, "cy ", 3) == 0)
 		sign = parse_cylinder(line, scene);
-		//return (printf("CYLINDER\n"), 0);
 	else if (ft_strncmp(line, "pl ", 3) == 0)
 		sign = parse_plane(line, scene);
-		/* return (printf("PLANE\n"), 0); */
 	return (sign);
 }
 
