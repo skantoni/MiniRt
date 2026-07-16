@@ -10,6 +10,7 @@ SRC = src/main.c src/clean.c src/windows/create_win.c src/parser/parse_minirt.c\
 	  src/parser/parse_ambient.c src/init.c src/parser/parse_camera.c src/str_array.c\
 	  src/parser/parse_light.c src/parser/parse_sphere.c src/parser/parse_vector.c\
 	  src/parser/parse_plane.c src/utils/minirt_utils.c\
+	  src/parser/parse_cylinder.c\
 
 OBJS = $(SRC:.c=.o)
 

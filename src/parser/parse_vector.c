@@ -12,31 +12,44 @@
 
 #include "minirt.h"
 
-
 int	is_valid_double(char *str)
 {
-	int	has_digit;
+	int	has_digit_before;
+	int	has_digit_after;
 	int	has_dot;
 
-	has_digit = 0;
+	has_digit_before = 0;
+	has_digit_after = 1;
 	has_dot = 0;
+	if (!str || !*str)
+		return (0);
 	if (*str == '+' || *str == '-')
 		str++;
-	while (*str)
+	if (!*str)
+		return (0);
+	while (*str && *str != '.')
 	{
-		if (ft_isdigit(*str))
-			has_digit = 1;
-		else if (*str == '.')
-		{
-			if (has_dot)
-				return (0);
-			has_dot = 1;
-		}
-		else
+		if (!ft_isdigit(*str))
 			return (0);
+		has_digit_before = 1;
 		str++;
 	}
-	return (has_digit);
+	if (*str == '.')
+	{
+		has_dot = 1;
+		str++;
+		has_digit_after = 0;
+		while (*str)
+		{
+			if (!ft_isdigit(*str))
+				return (0);
+			has_digit_after = 1;
+			str++;
+		}
+	}
+	if (has_dot)
+		return (has_digit_before && has_digit_after);
+	return (has_digit_before);
 }
 
 int	parse_vec3(char *str, t_vec3 *vec)

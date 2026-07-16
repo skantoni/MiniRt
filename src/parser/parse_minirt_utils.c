@@ -68,16 +68,27 @@ int	read_file(char *av, t_scene *scene)
 		return (1);
 	while (i < scene->line_count)
 	{
-		line = ft_strtrim((get_next_line(fd)), " \n\t");
+		line = get_next_line(fd);
+		if (!line)
+			break;
+		line = ft_strtrim(line, " \n\t");
 		if (!(line_empety(line)) && (line[0] != '#'))
-			scene->file[i++] = line;
+		{
+			scene->file[i] = line;
+			i++;
+		}
 		else
 			free(line);
 	}
 	scene->file[i] = NULL;
 	i = 0;
-	while (scene->file[i++])
-		printf("linha[%d] : %s\n", i, scene->file[i]);
+		i = 0;
+	while (scene->file[i])
+	{
+		printf("linha[%d] : %s\n", i + 1, scene->file[i]);
+		fflush(stdout);
+		i++;
+	}
 	close(fd);
 	return (0);
 }

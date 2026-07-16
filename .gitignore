@@ -1,8 +1,10 @@
 #ingnorar os .o
 *.o
 
+#Ficheiros inesperados
 *.swa
 *.swp
+*a.out
 
 #ignorar o executável
 miniRT
@@ -16,4 +18,3 @@ miniRT
 #ignorar meus(skeny) files
 *.sk
 
-*a.out

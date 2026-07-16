@@ -82,6 +82,7 @@ int     parse_sphere(char *line, t_scene *scene);
 int		parse_vec3(char *str, t_vec3 *vec);
 int		parse_plane(char *line, t_scene *scene);
 int		check_del(char *str, char del, int n);
+int		parse_cylinder(char *line, t_scene *scene);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 void    init(t_scene *scene, t_mlx *mlx);
 void	free_str_array(char **str);
