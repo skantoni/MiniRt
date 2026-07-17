@@ -6,11 +6,17 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 14:38:55 by pavelino          #+#    #+#             */
-/*   Updated: 2026/07/14 09:37:24 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/17 12:44:54 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+int	check_color_range(long r, long g, long b)
+{
+	return ((r >= 0 && r <= 255) && (g >= 0 && g <= 255)
+		&& (b >= 0 && b <= 255));
+}
 
 int check_del(char *str, char del, int n)
 {

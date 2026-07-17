@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 12:09:44 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/10 17:19:30 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/17 12:24:06 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ int	read_file(char *av, t_scene *scene)
 	if (!scene->file)
 		return (close(fd), 1);
 	i = 0;
-	while (i < scene->line_count) {
+	while (i < scene->line_count)
+	{
 		if (!(line = get_next_line(fd)))
-			break;
+			break ;
 		line = ft_strtrim(line, " \n\t");
 		if (!(line_empety(line)) && (line[0] != '#'))
 			scene->file[i++] = line;

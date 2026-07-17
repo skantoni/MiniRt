@@ -6,7 +6,7 @@
 /*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:34:51 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/14 12:21:35 by pavelino         ###   ########.fr       */
+/*   Updated: 2026/07/17 12:38:41 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int     parse_sphere(char *line, t_scene *scene);
 int		parse_vec3(char *str, t_vec3 *vec);
 int		parse_plane(char *line, t_scene *scene);
 int		check_del(char *str, char del, int n);
+int		check_color_range(long r, long g, long b);
 int		parse_cylinder(char *line, t_scene *scene);
 void	print_error(const char *prefix, const char *subject, const char *suffix);
 void    init(t_scene *scene, t_mlx *mlx);

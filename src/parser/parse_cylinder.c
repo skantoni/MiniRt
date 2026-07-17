@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skantoni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pavelino <pavelino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 14:43:54 by skantoni          #+#    #+#             */
-/*   Updated: 2026/07/14 14:44:01 by skantoni         ###   ########.fr       */
+/*   Updated: 2026/07/17 12:43:01 by pavelino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static int	check_color_range(long r, long g, long b)
-{
-	return ((r >= 0 && r <= 255) && (g >= 0 && g <= 255)
-		&& (b >= 0 && b <= 255));
-}
 
 static int	parse_cylinder_color(char *token, t_cylinder *cylinder)
 {
