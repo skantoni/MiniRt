@@ -67,7 +67,8 @@ int	parse_vec3(char *str, t_vec3 *vec)
 	if (!is_valid_double(sub_tokens[0])
 		|| !is_valid_double(sub_tokens[1])
 		|| !is_valid_double(sub_tokens[2]))
-		return (free_str_array(sub_tokens), 1);
+		return (printf("Error\nInvalid vec3 values\n"),
+			free_str_array(sub_tokens), 1);
 	vec->x = ft_atof(sub_tokens[0]);
 	vec->y = ft_atof(sub_tokens[1]);
 	vec->z = ft_atof(sub_tokens[2]);

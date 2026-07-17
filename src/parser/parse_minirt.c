@@ -63,11 +63,20 @@ static int	parse_file(char *av, t_scene *scene)
 	return (0);
 }
 
+static int requere_elements(t_scene *scene)
+{
+	if (!scene->has_ambient)
+		return (printf("Error\nMissing ambient light"), 1);
+	if (!scene->has_camera)
+		return (printf("Error\nMissing camera"), 1);
+	return (0);
+}
+
 int	parse_minirt(char *av, t_scene *scene)
 {
 	if (parse_extention(av))
 		return (1);
-	if (parse_file(av, scene))
+	if (parse_file(av, scene) || requere_elements(scene))
 		return (1);
 	return (0);
 }

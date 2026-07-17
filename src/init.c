@@ -16,5 +16,4 @@ void    init(t_scene *scene, t_mlx *mlx)
 {
     ft_memset(scene, 0, sizeof(t_scene));
     ft_memset(mlx, 0, sizeof(t_mlx));
-    
 }
